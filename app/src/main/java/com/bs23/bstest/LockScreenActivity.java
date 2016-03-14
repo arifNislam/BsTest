@@ -17,12 +17,18 @@ public class LockScreenActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, 0);
         if(sharedPreferences.getBoolean("first_run", true)) {
-            Log.i("Test", "first run");
             sharedPreferences.edit().putBoolean("first_run", false).commit();
-            Intent intent = new Intent();
+            Intent intent = new Intent(LockScreenActivity.this, SetPatternActivity.class);
+            startActivity(intent);
+            this.finish();
+
         } else {
-            Log.i("Test", "seccond run");
+            Intent intent = new Intent(LockScreenActivity.this, SampleConfirmPatternActivity.class);
+            startActivity(intent);
+            this.finish();
         }
+
+
 
     }
 }
